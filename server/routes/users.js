@@ -1,18 +1,12 @@
 var express = require('express');
 var router = express.Router();
+var Book = require('../models/books');
+var cuid = require('cuid');
 
 router.get('/', function(req, res, next) {
-	// Comment out this line:
-  //res.send('respond with a resource');
-
-  // And insert something like this instead:
-  res.json([{
-  	id: 1,
-  	username: "samsepi0l"
-  }, {
-  	id: 2,
-  	username: "D0loresH4ze"
-  }]);
+  let book = new Book ({ author: "fulano", title: "whatever", description: "star wars", cuid: cuid()});
+  let book2 = new Book ({ author: "fulano2", title: "whatever2", description: "star wars2", cuid: cuid()});
+  res.json([book, book2]);
 });
 
 module.exports = router;

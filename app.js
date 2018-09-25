@@ -1,41 +1,21 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const mongoose = require('mongoose');
+const server = express();
+const compression = require('compression');
+const PORT = 8000;
+const { connection, Schema } = mongoose
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const morgan = require('morgan'); //remove
+const bodyParser = require('body-parser');
 
-var app = express();
+const indexRoute = require('./server/routes/users');
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+server.use(morgan('dev')); //remove
+server.use(compression());
+server.use(bodyParser.json({ limit: '20mb' }));
+server.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+server.use("/users", indexRoute);
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+mongoose.connect( 'mongodb://localhost:27017/test' ).catch(console.error)
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
+server.listen(PORT, () => console.log(`Web Server running on port ${PORT}`));
