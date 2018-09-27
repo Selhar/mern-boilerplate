@@ -1,5 +1,7 @@
 .card {
-  border: 1px solid #e3e3e3;
+  border: none;
   background-color: #fff;
-  width: 250px;
+  width: fit-content;
+  height: fit-content;
+  cursor: pointer;
 }
