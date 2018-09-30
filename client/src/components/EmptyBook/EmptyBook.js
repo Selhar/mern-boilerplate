@@ -1,11 +1,22 @@
 import React, { Component } from 'react'
-import './EmptyBook.css';
-import '../../utils/generic.css'
+import './EmptyBook.css'
+
+const form = (
+  <form class="pure-form pure-form-stacked modal" id="modal">
+    <fieldset>
+      <input type="text" placeholder="Título" />
+      <input type="text" placeholder="Autor" />
+      <input type="text" placeholder="Descrição" />
+
+      <button type="submit" class="pure-button pure-button-primary">Adicionar</button>
+    </fieldset>
+  </form>
+)
 
 export default class EmptyBook extends Component {
 
   componentDidMount(){
-    require('../../utils/generic.js');
+    require('./EmptyBookJS.js');
   }
 
   render() {
@@ -14,20 +25,7 @@ export default class EmptyBook extends Component {
       <div class="card" id="modal-control">
         <img src="https://via.placeholder.com/150x250" alt="add a new book"></img>
       </div>
-      <form class="pure-form modal" id="modal">
-        <fieldset>
-          <legend>A compact inline form</legend>
-
-          <input type="email" placeholder="Email" />
-          <input type="password" placeholder="Password" />
-
-          <label for="remember">
-            <input id="remember" type="checkbox" /> Remember me
-          </label>
-
-          <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-        </fieldset>
-      </form>
+      {form}
     </div>
     )
   }
