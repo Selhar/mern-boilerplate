@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import './EmptyBook.css'
 
 const form = (
-  <form class="pure-form pure-form-stacked modal" id="modal">
+  <form class="pure-form pure-form-stacked modal" id="modal" method="post" action="/users">
     <fieldset>
-      <input type="text" placeholder="Título" />
-      <input type="text" placeholder="Autor" />
-      <input type="text" placeholder="Descrição" />
+      <input type="text" placeholder="Título" name="title" />
+      <input type="text" placeholder="Autor" name="author"/>
+      <input type="text" placeholder="Descrição" name="description" />
 
       <button type="submit" class="pure-button pure-button-primary">Adicionar</button>
     </fieldset>

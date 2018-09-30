@@ -10,18 +10,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  Book.findById(req.payload.id).then(function(user){
-    if (!user) { return res.sendStatus(401); }
+  let book = new Book({
+    author:       req.body.author,
+    title:        req.body.title,
+    description:  req.body.description,
+    cuid:         cuid()
+  });
 
-    var article = new Article(req.body.article);
-
-    article.author = user;
-
-    return article.save().then(function(){
-      console.log(article.author);
-      return res.json({article: article.toJSONFor(user)});
-    });
-  }).catch(next);
+  book.save( (err, data, next) => {
+    if (err) res.send(err);
+    res.send('Book inserted');
+  })
 });
 
 module.exports = router;
