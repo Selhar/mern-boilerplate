@@ -1,3 +1,4 @@
+export const FETCH_BOOKS = 'FETCH_BOOKS';
 import { normalize } from 'normalizr';
 import { fetchSongs } from '../actions/PlaylistActions';
 import * as types from '../constants/ActionTypes';

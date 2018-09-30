@@ -7,8 +7,8 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <div class="pure-g">
-          <BookList/>
+        <div className="pure-g">
+          <BookList category="reading"/>
         </div>
       </div>
     )

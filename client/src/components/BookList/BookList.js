@@ -1,15 +1,24 @@
-import EmptyBook from '../EmptyBook/EmptyBook';
+import Book from '../Book/Book';
 import './BookList.css';
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
-export default class BookList extends Component {
+class BookList extends Component {
   render() {
+    const { category } = this.props;
+
     return (
-      <div class="pure-u-1-2 container">
-        <h1>adicionar props</h1>
+      <div className="pure-u-1-2 container">
+        <h1>{category}</h1>
         <hr/>
-        <EmptyBook/>
+        <Book category={category} />
       </div>
     )
   }
 }
+
+BookList.propTypes = {
+  category: PropTypes.string.isRequired,
+}
+
+export default BookList;
