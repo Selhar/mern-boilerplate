@@ -1,7 +1,6 @@
+import { combineReducers } from 'redux';
+import bookListReducer from './BookListReducer'
 
-import {combineReducers} from 'redux';
-
-const rootReducer = combineReducers({
-});
-
-export default rootReducer;
+export default combineReducers ({
+  bookListReducer,
+})

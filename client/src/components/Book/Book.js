@@ -21,7 +21,7 @@ class Book extends Component {
           <input type="text" placeholder="Autor" name="author"/>
           <input type="text" placeholder="Descrição" name="description" />
           <input type="hidden" name="category" value={category} />
-          <button type="submit" className="pure-button pure-button-primary">Adicionar</button>
+          <button type="submit" className="pure-button pure-button-primary" id="btnAddBook">Adicionar</button>
         </fieldset>
       </form>
     </div>

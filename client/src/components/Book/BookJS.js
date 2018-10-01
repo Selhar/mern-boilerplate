@@ -1,14 +1,17 @@
-var modal = document.getElementById('modal');
-var btn = document.getElementById("modal-control");
+let modal = document.getElementById('modal');
+let btn = document.getElementById('modal-control');
+let addBtn = document.getElementById('btnAddBook');
 
 btn.onclick = function() {
   modal.style.display = "block";
 }
 
+addBtn.onclick = () => {
+  modal.style.display = "none";
+}
+
 window.onclick = function(event) {
   if (modal.style.display === "none"){
-    if (event.target === modal) {
       modal.style.display = "none";
-    }
   }
 }
