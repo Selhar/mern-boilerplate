@@ -21,7 +21,7 @@ router.post('/', function(req, res, next) {
 
   book.save( (err, data, next) => {
     if (err) res.send(err);
-    res.send('Book inserted');
+    res.end();
   })
 });
 
