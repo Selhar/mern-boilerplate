@@ -13,9 +13,9 @@ const indexRoute = require('./server/routes/users');
 server.use(morgan('dev')); //remove
 server.use(compression());
 server.use(bodyParser.json({ limit: '20mb' }));
-server.use(bodyParser.urlencoded({ limit: '20mb', extended: false }));
+server.use(bodyParser.urlencoded({ limit: '20mb', extended: true }));
 server.use("/users", indexRoute);
 
-mongoose.connect( 'mongodb://localhost:27017/test' ).catch(console.error)
+mongoose.connect('mongodb://localhost:27017/test');
 
 server.listen(PORT, () => console.log(`Web Server running on port ${PORT}`));

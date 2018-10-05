@@ -1,20 +1,42 @@
+import './BookList.css';
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { FETCH_BOOKS } from '../constants/ActionTypes';
+import fetch from 'cross-fetch';
 import BookList from './BookList.js';
 
-const BookListContainer = props => <BookList {...props} />;
+class BookListContainer extends Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    teste: PropTypes.string.isRequired,
+  }
 
-const mapStateToProps = state => ({
-  isPlaying: getIsPlaying(state),
-  playingSongId: getPlayingSongId(state),
-  playlist: HISTORY_PLAYLIST,
-  showHistory: getShowHistory(state),
-  songs: getSongs(state),
-});
+  componentDidMount() {
+    const books = fetch('/users')
+      .then(res => res.json())
+      .then(users => {this.setState({ users }); console.log(users)});
+  }
 
-export default connect(mapStateToProps, {
-  navigateTo,
-  playSong,
-  toggleShowHistory,
-})(HistoryContainer);
+  render() {
+    return (
+      <BookList books={books} />
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    books: state.books,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchBooks: () => dispatch(FETCH_BOOKS())
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BookListContainer)

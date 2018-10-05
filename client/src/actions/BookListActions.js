@@ -1,8 +1,11 @@
-import * as types from '../constants/ActionTypes';
+import { FETCH_BOOKS } from '../constants/ActionTypes';
+import fetch from 'cross-fetch'
+​
+const fetch_books = (books) => {
+  return{
+    type: FETCH_BOOKS,
+    books
+  }
+};
 
-const fetchBooks = ( books ) => ({
-  type: types.FETCH_BOOKS,
-  books
-});
-
-export default fetchBooks;
+export default fetch_books;

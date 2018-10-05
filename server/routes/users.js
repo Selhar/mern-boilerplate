@@ -18,10 +18,11 @@ router.post('/', function(req, res, next) {
     category:     req.body.category,
     cuid:         cuid()
   });
-
-  book.save( (err, data, next) => {
-    if (err) res.send(err);
-    res.end();
+  book.save((error) => {
+    if (error){
+      res.send(error);
+    }
+    res.end(book.author);
   })
 });
 

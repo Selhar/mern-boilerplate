@@ -1,10 +1,17 @@
-import fetch from 'cross-fetch';
+import { FETCH_BOOKS } from '../constants/ActionTypes';
 
-export default (action, state) => {
+const defaultState = {
+  books: [],
+}
+
+export default (action = FETCH_BOOKS, state = defaultState) => {
   switch (action.type) {
     case FETCH_BOOKS:
-      return fetch('/users').then( res => { return res.json(); } );
+      return {
+        ...state,
+        books: action.books
+      }
     default:
-      return state
+      return defaultState
   }
 }

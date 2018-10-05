@@ -1,4 +1,4 @@
-import BookList from '../BookList/BookList'
+import BookListContainer from '../BookList/BookListContainer'
 import React, { Component } from 'react'
 import './pure.css'
 import './Home.css';
@@ -8,7 +8,7 @@ export default class Home extends Component {
     return (
       <div>
         <div className="pure-g">
-          <BookList category="reading"/>
+          <BookListContainer category="reading"/>
         </div>
       </div>
     )
