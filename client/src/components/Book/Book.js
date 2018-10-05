@@ -15,7 +15,7 @@ class Book extends Component {
       <div className="card" id="modal-control">
         <img src="https://via.placeholder.com/150x250" alt="add a new book"></img>
       </div>
-      <form className="pure-form pure-form-stacked modal" id="modal" method="post" action="/users">
+      <form className="pure-form pure-form-stacked modal" id="modal" method="post" action="/books">
         <fieldset>
           <input type="text" placeholder="Título" name="title" />
           <input type="text" placeholder="Autor" name="author"/>

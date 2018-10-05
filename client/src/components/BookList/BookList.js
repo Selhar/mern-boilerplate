@@ -1,15 +1,20 @@
 import Book from '../Book/Book';
 import './BookList.css';
-import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 
-export default class BookList extends Component {
-  render() {
-    return (
-      <div className="pure-u-1-2 container">
-        <h1>{"users"}</h1>
-        <hr/>
-        <Book/>
-      </div>
-    )
-  }
+const BookList = ({ books, fetchBooks }) => (
+  <div className="pure-u-1-2 container">
+    <h1 onClick={fetchBooks}>asd</h1>
+    <hr/>
+    <span>{books ? books[0].author : "no books"}</span>
+    <Book/>
+  </div>
+)
+
+BookList.propTypes = {
+  books: PropTypes.array.isRequired,
+  fetchBooks: PropTypes.func.isRequired,
 }
+
+export default BookList

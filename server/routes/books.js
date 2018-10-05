@@ -5,9 +5,10 @@ var cuid = require('cuid');
 const categories = require('../constants/models');
 
 router.get('/', function(req, res, next) {
-  let book = new Book ({ author: "fulano", title: "whatever", description: "star wars", category: categories.interested, cuid: cuid()});
-  let book2 = new Book ({ author: "fulano2", title: "whatever2", description: "star wars2", category: categories.interested, cuid: cuid()});
-  res.json([book, book2]);
+  Book.find({}, (error, books) => {
+    if(error) return res(error);
+    res.json(books);
+  })
 });
 
 router.post('/', function(req, res, next) {
