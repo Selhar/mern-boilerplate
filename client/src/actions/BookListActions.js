@@ -3,9 +3,9 @@ import fetch from 'cross-fetch';
 
 export default () => {
   return fetch('/books').then(res => res.json()).then(books => {
-      {
+    return {
         type: FETCH_BOOKS,
         books
-      }
+    }
   })
 };

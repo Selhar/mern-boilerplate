@@ -3,12 +3,12 @@ import './BookList.css';
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const BookList = ({ books, fetchBooks }) => (
+const BookList = ({ books, category }) => (
   <div className="pure-u-1-2 container">
-    <h1 onClick={fetchBooks}>asd</h1>
+    <h1>asd</h1>
     <hr/>
-    <span>{books ? books[0].author : "no books"}</span>
-    <Book/>
+    <span>{books ? books[0].author : books}</span>
+    <Book category={category} />
   </div>
 )
 

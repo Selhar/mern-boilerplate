@@ -3,23 +3,28 @@ import React, {Component} from 'react'
 import fetchBooks from '../../actions/BookListActions';
 import {connect} from 'react-redux'
 import BookList from './BookList.js';
+import PropTypes from 'prop-types'
 
 class BookListContainer extends Component {
-  componentDidMount() {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+  }
+
+componentDidMount() {
     fetchBooks();
   }
 
   render() {
+    const {books} = this.props;
     return (
-      <BookList />
+      <BookList books={books}/>
     )
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    books: state.books,
-  }
+  const { books } = state;
+  return books;
 }
 
 const mapDispatchToProps = dispatch => {

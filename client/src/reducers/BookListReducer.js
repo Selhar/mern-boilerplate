@@ -1,7 +1,7 @@
 import { FETCH_BOOKS } from '../constants/ActionTypes';
 
 const defaultState = {
-  books: [],
+  books: "TESTE",
 }
 
 export default (action = FETCH_BOOKS, state = defaultState) => {
