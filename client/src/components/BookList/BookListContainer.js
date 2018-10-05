@@ -1,13 +1,19 @@
 import './BookList.css';
-import React from 'react'
-import { FETCH_BOOKS } from '../../constants/ActionTypes';
+import React, {Component} from 'react'
+import fetchBooks from '../../actions/BookListActions';
 import {connect} from 'react-redux'
 import BookList from './BookList.js';
 
-const BookListContainer = ({fetchBooks, books}) => {
-  return (
-    <BookList onClick={fetchBooks} />
-  )
+class BookListContainer extends Component {
+  componentDidMount() {
+    fetchBooks();
+  }
+
+  render() {
+    return (
+      <BookList />
+    )
+  }
 }
 
 const mapStateToProps = state => {
@@ -18,7 +24,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchBooks: () => dispatch(FETCH_BOOKS())
+    fetchBooks: () => dispatch(fetchBooks())
   }
 }
 
