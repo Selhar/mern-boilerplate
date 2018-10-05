@@ -1,27 +1,13 @@
 import './BookList.css';
-import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-import { FETCH_BOOKS } from '../constants/ActionTypes';
-import fetch from 'cross-fetch';
+import React from 'react'
+import { FETCH_BOOKS } from '../../constants/ActionTypes';
+import {connect} from 'react-redux'
 import BookList from './BookList.js';
 
-class BookListContainer extends Component {
-  static propTypes = {
-    books: PropTypes.array.isRequired,
-    teste: PropTypes.string.isRequired,
-  }
-
-  componentDidMount() {
-    const books = fetch('/users')
-      .then(res => res.json())
-      .then(users => {this.setState({ users }); console.log(users)});
-  }
-
-  render() {
-    return (
-      <BookList books={books} />
-    )
-  }
+const BookListContainer = ({fetchBooks, books}) => {
+  return (
+    <BookList onClick={fetchBooks} />
+  )
 }
 
 const mapStateToProps = state => {
