@@ -9,9 +9,11 @@ const BookList = ({ books, category }) => {
     <div className="pure-u-1-2 container">
       <h1>{category}</h1>
       <hr/>
-      {books.map((book) =>
-        <Book category={category} book={book} key={cuid()} />
-      )}
+      <div className="booklist">
+        {books.map((book) =>
+          <Book category={category} book={book} key={cuid()} />
+        )}
+      </div>
     </div>
   )
 }

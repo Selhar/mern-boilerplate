@@ -11,7 +11,7 @@ class Book extends Component {
     const { category, book } = this.props;
 
     return (
-    <div>
+    <div className="book">
       <h1>{book.author}</h1>
       <div className="card" id="modal-control">
         <img src="https://via.placeholder.com/150x250" alt="add a new book"></img>

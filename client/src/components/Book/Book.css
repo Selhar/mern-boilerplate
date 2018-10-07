@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.book {
+  width: 200px;
+}
+
 .modal {
   display: none;
   position: fixed;
