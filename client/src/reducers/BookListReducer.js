@@ -1,15 +1,15 @@
-import { FETCH_BOOKS } from '../constants/ActionTypes';
+import { ADD_BOOKS_TO_STATE } from '../constants/ActionTypes';
 
 const defaultState = {
-  books: "TESTE",
+  books: [],
 }
 
-export default (action = FETCH_BOOKS, state = defaultState) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
-    case FETCH_BOOKS:
+    case ADD_BOOKS_TO_STATE:
       return {
         ...state,
-        books: state.books
+        books: action.books
       };
     default:
       return defaultState

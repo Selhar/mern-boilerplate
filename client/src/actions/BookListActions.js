@@ -1,11 +1,8 @@
-import { FETCH_BOOKS } from '../constants/ActionTypes';
-import fetch from 'cross-fetch';
+import { ADD_BOOKS_TO_STATE } from '../constants/ActionTypes';
 
-export default () => {
-  return fetch('/books').then(res => res.json()).then(books => {
-    return {
-        type: FETCH_BOOKS,
-        books
-    }
-  })
+export default (books) => {
+  return {
+      type: ADD_BOOKS_TO_STATE,
+      books
+  }
 };

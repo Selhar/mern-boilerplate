@@ -1,21 +1,23 @@
 import './BookList.css';
 import React, {Component} from 'react'
-import fetchBooks from '../../actions/BookListActions';
+import addBooksToState from '../../actions/BookListActions';
 import {connect} from 'react-redux'
+import fetch from 'cross-fetch';
 import BookList from './BookList.js';
-import PropTypes from 'prop-types'
 
 class BookListContainer extends Component {
-  static propTypes = {
-    books: PropTypes.array.isRequired,
-  }
+  componentDidMount() {
 
-componentDidMount() {
-    fetchBooks();
+  const { addBooksToState } = this.props;
+    fetch('/books')
+    .then(res => res.json())
+    .then(books => {
+      addBooksToState(books);
+    });
   }
 
   render() {
-    const {books} = this.props;
+    const {category, books} = this.props;
     return (
       <BookList books={books}/>
     )
@@ -29,7 +31,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchBooks: () => dispatch(fetchBooks())
+    addBooksToState: books => dispatch(addBooksToState(books))
   }
 }
 
