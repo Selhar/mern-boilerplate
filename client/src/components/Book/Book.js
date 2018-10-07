@@ -8,10 +8,11 @@ class Book extends Component {
   }
 
   render() {
-    const { category } = this.props;
+    const { category, book } = this.props;
 
     return (
     <div>
+      <h1>{book.author}</h1>
       <div className="card" id="modal-control">
         <img src="https://via.placeholder.com/150x250" alt="add a new book"></img>
       </div>

@@ -1,7 +1,7 @@
 import { ADD_BOOKS_TO_STATE } from '../constants/ActionTypes';
 
 const defaultState = {
-  data: ['teste'],
+  data: [],
 };
 
 export default (state = defaultState, action) => {

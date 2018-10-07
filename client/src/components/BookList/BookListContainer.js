@@ -23,9 +23,8 @@ class BookListContainer extends Component {
 
   render() {
     const {category, books} = this.props;
-    console.log(`\n\n\n${JSON.stringify(this.props)}`)
     return (
-      <BookList books={books}/>
+      <BookList books={books} category={category} />
     )
   }
 }

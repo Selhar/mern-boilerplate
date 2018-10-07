@@ -1,12 +1,13 @@
 import BookListContainer from '../BookList/BookListContainer'
 import React, { Component } from 'react'
+import cuid from 'cuid';
 import './pure.css'
 import './Home.css';
 
 export default class Home extends Component {
   render() {
-    const lists = ['interested', 'reading', 'read'].map( (category) => {
-      return <BookListContainer category={category} />
+    const lists = ['reading'].map( (category) => {
+      return <BookListContainer category={category} key={cuid()} />
     });
     return (
       <div>
