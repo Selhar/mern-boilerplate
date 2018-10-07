@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import bookListReducer from './BookListReducer'
+import books from './BookListReducer'
 
-export default combineReducers ({
-  bookListReducer,
+const reducersIndex = combineReducers({
+  books,
 })
+
+export default reducersIndex;
